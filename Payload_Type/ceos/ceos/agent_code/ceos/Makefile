@@ -2,8 +2,8 @@ CPPFLAGS := -fno-asynchronous-unwind-tables
 CPPFLAGS += -fno-ident -fpack-struct=8 -falign-functions=1  
 CPPFLAGS += -s -ffunction-sections -falign-jumps=1 -w 
 CPPFLAGS += -falign-labels=1 -fPIC 
-CPPFLAGS += -Wl,-s,--no-seh,--enable-stdcall-fixup,--gc-sections  -Wno-pointer-arith -fpermissive  -Os  -D MAIN_THREADED -e WinMain -lwinhttp -liphlpapi -lnetapi34 -mwindows -D_DEBUG
-#CPPFLAGS += -Wl,-s,--no-seh,--enable-stdcall-fixup,--gc-sections -fpermissive -e main -D_DEBUG -lwinhttp -liphlpapi -lnetapi32
+#CPPFLAGS += -Wl,-s,--no-seh,--enable-stdcall-fixup,--gc-sections  -Wno-pointer-arith -fpermissive  -Os  -D MAIN_THREADED -e WinMain -lwinhttp -liphlpapi -lnetapi34 -mwindows
+CPPFLAGS += -Wl,-s,--no-seh,--enable-stdcall-fixup,--gc-sections -fpermissive -e main -D_DEBUG -lwinhttp -liphlpapi -lnetapi32
 
 
 CXX      := x86_64-w64-mingw32-g++
