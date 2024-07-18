@@ -8,6 +8,8 @@ CONFIG_CEOS* ceosConfig = nullptr;
 
 VOID ceosMain()
 {
+	  _dbg("[TASKING] Got new UUID ! --> %s\n", newUUID);
+
     ceosConfig = (CONFIG_CEOS*)LocalAlloc(LPTR, sizeof(CONFIG_CEOS));
     // Config Init
     ceosConfig->agentID = (PCHAR)initUUID;
