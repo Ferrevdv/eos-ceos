@@ -44,7 +44,7 @@ class CeosAgent(PayloadType):
         resp = BuildResponse(status=BuildStatus.Success)
         Config = {
             "payload_uuid": self.uuid,
-            "callback_host": "", 
+            "callback_host": "",
             "USER_AGENT": "",
             "httpMethod": "POST",
             "post_uri": "",
