@@ -75,7 +75,7 @@ BOOL routine()
 	commandDispatch(ResponseParser);
 
 	freeParser(ResponseParser);
-
+	
 	// Sleep
 	if (ceosConfig->jitter < 1) {
 		Sleep(ceosConfig->sleeptime_ms);

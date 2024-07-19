@@ -17,7 +17,6 @@ BOOL executeExit(PParser arguments)
 
 	Parser* ResponseParser = sendPackage(responseTask);
 
-	freeParser(ResponseParser);
 
 	return TRUE;
 

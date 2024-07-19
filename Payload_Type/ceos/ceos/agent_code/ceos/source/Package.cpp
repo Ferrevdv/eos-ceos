@@ -128,7 +128,7 @@ PParser sendPackage(PPackage package)
 		return nullptr;
 	}
 
-	freePackage(checkin);
+	freePackage(package);
 		
 	return response;
 
