@@ -45,6 +45,7 @@ class CeosAgent(PayloadType):
         Config = {
             "payload_uuid": self.uuid,
             "callback_host": "",
+            "callback_jitter": "",
             "USER_AGENT": "",
             "httpMethod": "POST",
             "post_uri": "",
@@ -102,6 +103,7 @@ class CeosAgent(PayloadType):
             content = content.replace("%SLEEPTIME%", str(Config["callback_interval"]))
             content = content.replace("%JITTER%", str(Config["callback_jitter"]))
             content = content.replace("%USERAGENT%", Config["USER_AGENT"])
+
             content = content.replace("%PROXYURL%", Config["proxy_host"])
             if Config["proxyEnabled"]:
                 content = content.replace("%PROXYENABLED%", "TRUE")
