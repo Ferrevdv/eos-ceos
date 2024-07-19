@@ -3,6 +3,7 @@
 #define UTILS
 #include <windows.h>
 #include "Debug.h"
+#include <stdlib.h> // rand(), srand()
 
 
 #ifdef __MINGW64__
@@ -22,4 +23,6 @@ size_t b64EncodedSize(size_t inlen);
 
 VOID addInt64ToBuffer(PBYTE buffer, UINT64 value);
 VOID addInt32ToBuffer(PBYTE buffer, UINT32 value);
+
+UINT32 get_random_int(UINT32 max);
 #endif

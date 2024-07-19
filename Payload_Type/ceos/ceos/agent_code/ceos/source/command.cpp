@@ -1,6 +1,5 @@
 #include "ceos.h"
 #include "Command.h"
-#include <stdlib.h> // rand(), srand()
 
 BOOL handleGetTasking(PParser getTasking)
 {
@@ -76,18 +75,26 @@ BOOL routine()
 	}
 	else
 	{
+		UINT32 jitter_perc = get_random_int(ceosConfig->jitter);
+		UINT32 jitter_amount = (ceosConfig->sleeptime * jitter_perc)/100;
 		if ((rand() % 2) == 1)
 		{
-			Sleep(ceosConfig->sleeptime_ms + (ceosConfig->sleeptime_ms * ((rand() % (ceosConfig->jitter + 1))/100)))
+			Sleep(ceosConfig->sleeptime_ms + jitter_amount);
 		}
 		else
 		{
-			Sleep(ceosConfig->sleeptime_ms - (ceosConfig->sleeptime_ms * ((rand() % (ceosConfig->jitter + 1))/100)))
+			if (ceosConfig->sleeptime_ms > jitter_amount)
+			{
+				Sleep(ceosConfig->sleeptime_ms - jitter_amount);
+			}
+			else
+			{
+				// ensures sleep time is non-negative
+				Sleep(ceosConfig->sleeptime_ms);
+			}
 		}
 	}
 	
-
-
 	return TRUE;
 
 }

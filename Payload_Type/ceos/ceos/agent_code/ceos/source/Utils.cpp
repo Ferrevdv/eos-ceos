@@ -186,3 +186,6 @@ VOID addInt64ToBuffer(PBYTE buffer, UINT64 value)
     buffer[0] = value & 0xFF;
 }
 
+UINT32 get_random_int(UINT32 max) {
+    return rand() % (max + 1)
+}
