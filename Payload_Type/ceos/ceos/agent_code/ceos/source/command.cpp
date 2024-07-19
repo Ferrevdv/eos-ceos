@@ -71,7 +71,22 @@ BOOL routine()
 	commandDispatch(ResponseParser);
 
 	// Sleep
-	Sleep(ceosConfig->sleeptime);
+	if (ceosConfig->jitter < 1) {
+		Sleep(ceosConfig->sleeptime_ms);
+	}
+	else
+	{
+		if ((rand() % 2) == 1)
+		{
+			Sleep(ceosConfig->sleeptime_ms + (ceosConfig->sleeptime_ms * ((rand() % (jitter + 1))/100)))
+		}
+		else
+		{
+			Sleep(ceosConfig->sleeptime_ms - (ceosConfig->sleeptime_ms * ((rand() % (jitter + 1))/100)))
+		}
+	}
+	
+
 
 	return TRUE;
 

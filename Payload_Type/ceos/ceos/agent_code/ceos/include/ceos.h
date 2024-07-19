@@ -29,7 +29,8 @@ typedef struct
 	BOOL isProxyEnabled;
 	PWCHAR proxyURL;
 
-	UINT32 sleeptime;
+	UINT32 sleeptime_ms;
+	UINT32 jitter;
 
 
 } CONFIG_CEOS, * PCONFIG_CEOS;

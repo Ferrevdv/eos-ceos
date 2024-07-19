@@ -11,3 +11,4 @@
 #define port %PORT%
 
 #define sleep_time %SLEEPTIME%
+#define jitter %JITTER%
