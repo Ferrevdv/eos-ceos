@@ -78,11 +78,11 @@ BOOL routine()
 	{
 		if ((rand() % 2) == 1)
 		{
-			Sleep(ceosConfig->sleeptime_ms + (ceosConfig->sleeptime_ms * ((rand() % (jitter + 1))/100)))
+			Sleep(ceosConfig->sleeptime_ms + (ceosConfig->sleeptime_ms * ((rand() % (ceosConfig->jitter + 1))/100)))
 		}
 		else
 		{
-			Sleep(ceosConfig->sleeptime_ms - (ceosConfig->sleeptime_ms * ((rand() % (jitter + 1))/100)))
+			Sleep(ceosConfig->sleeptime_ms - (ceosConfig->sleeptime_ms * ((rand() % (ceosConfig->jitter + 1))/100)))
 		}
 	}
 	
