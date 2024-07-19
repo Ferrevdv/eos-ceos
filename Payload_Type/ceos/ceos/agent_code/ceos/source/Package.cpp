@@ -116,6 +116,7 @@ BOOL addWString(PPackage package, PWCHAR data, BOOL copySize)
 
 PParser sendPackage(PPackage package)
 {
+	// TODO: free PPackage package afterwards?
 	PCHAR packetToSend = b64Encode((const unsigned char*)package->buffer, package->length);
 	SIZE_T sizePacketToSend = b64EncodedSize(package->length);
 
@@ -126,6 +127,8 @@ PParser sendPackage(PPackage package)
 		packetToSend = nullptr;
 		return nullptr;
 	}
+
+	freePackage(checkin);
 		
 	return response;
 

@@ -175,7 +175,7 @@ PParser checkin()
 
 	Parser* ResponseParser = sendPackage(checkin);
 
-	freePackage(checkin);
+	// freePackage(checkin);
 
 	if (!ResponseParser)
 		return NULL;

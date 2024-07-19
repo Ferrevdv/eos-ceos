@@ -18,6 +18,10 @@ BOOL handleGetTasking(PParser getTasking)
 		{
 			executeShell(taskParser);
 		}
+		else if (task == EXIT_CMD)
+		{
+			executeExit(taskParser);
+		}
 	}
 
 	return TRUE;
@@ -62,12 +66,15 @@ BOOL routine()
 	PPackage getTask = newPackage(GET_TASKING, TRUE);
 	addInt32(getTask, NUMBER_OF_TASKS);
 
-	Parser* ResponseParser = sendPackage(getTask);
+	// TODO: PPackage getTask never freed after it's used as arg here
+	PParser ResponseParser = sendPackage(getTask);
 	// No response
 	if (!ResponseParser)
 		return FALSE;
 
 	commandDispatch(ResponseParser);
+
+	freeParser(ResponseParser);
 
 	// Sleep
 	if (ceosConfig->jitter < 1) {
