@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "Debug.h"
 #include <stdlib.h> // rand(), srand()
+#include <time.h> // time()
 
 
 #ifdef __MINGW64__
