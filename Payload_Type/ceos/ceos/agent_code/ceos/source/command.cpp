@@ -1,6 +1,6 @@
 #include "ceos.h"
 #include "Command.h"
-
+#include <stdlib.h> // rand(), srand()
 
 BOOL handleGetTasking(PParser getTasking)
 {
