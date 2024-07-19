@@ -33,3 +33,4 @@ VOID setUUID(PCHAR newUUID)
     ceosConfig->agentID = newUUID;
     return;
 }
+
