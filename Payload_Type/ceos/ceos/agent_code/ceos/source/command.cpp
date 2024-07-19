@@ -76,7 +76,7 @@ BOOL routine()
 	else
 	{
 		UINT32 jitter_perc = get_random_int(ceosConfig->jitter);
-		UINT32 jitter_amount = (ceosConfig->sleeptime * jitter_perc)/100;
+		UINT32 jitter_amount = (ceosConfig->sleeptime_ms * jitter_perc)/100;
 		if ((rand() % 2) == 1)
 		{
 			Sleep(ceosConfig->sleeptime_ms + jitter_amount);
