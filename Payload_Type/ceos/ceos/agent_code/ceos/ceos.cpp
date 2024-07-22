@@ -29,6 +29,7 @@ VOID ceosMain()
     parseCheckin(ResponseParser);
     while (TRUE)
         routine();
+}
 
 VOID setUUID(PCHAR newUUID)
 {
