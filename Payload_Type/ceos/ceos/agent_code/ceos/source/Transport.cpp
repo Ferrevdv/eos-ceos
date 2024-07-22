@@ -181,6 +181,10 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 	respBuffer = LocalReAlloc(respBuffer, respSize + 1, LMEM_MOVEABLE | LMEM_ZEROINIT);
 
 	PParser returnParser = newParser((PBYTE)respBuffer, respSize);
+
+	// TODO: free memory (bufferIn, HttpUrl, ...)
+
+
 	return returnParser;
 
 
