@@ -6,8 +6,6 @@
 
 CONFIG_CEOS* ceosConfig = nullptr;
 
-#define _CRTDBG_MAP_ALLOC
-
 VOID ceosMain()
 {
     ceosConfig = (CONFIG_CEOS*)LocalAlloc(LPTR, sizeof(CONFIG_CEOS));
