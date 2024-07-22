@@ -183,6 +183,8 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 	PParser returnParser = newParser((PBYTE)respBuffer, respSize);
 
 	// TODO: free memory (bufferIn, HttpUrl, ...)
+	// 'HttpUrl' allocated by LocalAlloc 
+	LocalFree(HttpUrl);
 
 
 	return returnParser;
@@ -198,6 +200,9 @@ Parser* sendAndReceive(PBYTE data, SIZE_T size)
 #ifdef HTTP_TRANSPORT
 	return makeHTTPRequest(data, size);
 #endif 
+
+	// 'data' once allocated by b64Encode, which uses LocalAlloc
+	LocalFree(data);
 
 	return nullptr;
 }
