@@ -21,7 +21,8 @@ PParser newParser(PBYTE buffer, SIZE_T size)
 
 VOID freeParser(PParser parser)
 {
-	parser->original = nullptr;
+	if (parser->original)
+		LocalFree(parser->original);
 	parser->buffer = nullptr;
 	LocalFree(parser);
 }
