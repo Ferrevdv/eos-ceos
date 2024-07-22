@@ -26,8 +26,9 @@ PPackage newPackage(BYTE commandID, BOOL init)
 
 VOID freePackage(PPackage package)
 {
-	if (package->buffer)
-		LocalFree(package->buffer);
+	// if (package->buffer)
+	// 	LocalFree(package->buffer);
+	package->buffer = nullptr;
 	LocalFree(package);
 }
 
