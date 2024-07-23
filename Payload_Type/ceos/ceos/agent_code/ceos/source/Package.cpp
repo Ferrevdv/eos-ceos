@@ -130,7 +130,7 @@ PParser sendPackage(PPackage package)
 	}
 
 	// once allocated by b64Encode, which uses LocalAlloc
-	LocalFree(data);
+	LocalFree(packetToSend);
 	freePackage(package);
 		
 	return response;
