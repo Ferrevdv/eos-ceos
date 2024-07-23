@@ -29,6 +29,13 @@ VOID ceosMain()
         routine();
 }
 
+VOID freeCeosConfig()
+{
+    if (ceosConfig)
+        LocalFree(ceosConfig);
+    return;
+}
+
 VOID setUUID(PCHAR newUUID)
 {
     ceosConfig->agentID = newUUID;

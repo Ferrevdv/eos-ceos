@@ -33,11 +33,10 @@ BOOL executeShell(PParser arguments)
 	addBytes(responseTask, (PBYTE)output->buffer, output->length, TRUE);
 
 	_pclose(fp);
-	// TODO: package never gets freed?
-	// TODO: responseParser also never gets freed?
 	Parser* ResponseParser = sendPackage(responseTask);
 
-	return TRUE;
+	freeParser(ResponseParser);
 
+	return TRUE;
 
 }

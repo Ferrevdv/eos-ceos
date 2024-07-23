@@ -66,9 +66,8 @@ BOOL routine()
 	PPackage getTask = newPackage(GET_TASKING, TRUE);
 	addInt32(getTask, NUMBER_OF_TASKS);
 
-	// TODO: PPackage getTask never freed after it's used as arg here
 	PParser ResponseParser = sendPackage(getTask);
-	// No response
+
 	if (!ResponseParser)
 		return FALSE;
 
@@ -76,7 +75,7 @@ BOOL routine()
 
 	freeParser(ResponseParser);
 	
-	// Sleep
+	// Sleep (with jitter)
 	if (ceosConfig->jitter < 1) {
 		Sleep(ceosConfig->sleeptime_ms);
 	}

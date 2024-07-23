@@ -222,9 +222,6 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 
 	PParser returnParser = newParser((PBYTE)respBuffer, respSize);
 
-	// TODO: free memory (bufferIn, HttpUrl, ...)
-	// 'HttpUrl' allocated by LocalAlloc 
-            // BUT HttpUrl only allocated in if branch --> free there!
         // Cleanup
         WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);

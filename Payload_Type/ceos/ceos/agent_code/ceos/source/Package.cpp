@@ -117,7 +117,6 @@ BOOL addWString(PPackage package, PWCHAR data, BOOL copySize)
 
 PParser sendPackage(PPackage package)
 {
-	// TODO: free PPackage package afterwards?
 	PCHAR packetToSend = b64Encode((const unsigned char*)package->buffer, package->length);
 	SIZE_T sizePacketToSend = b64EncodedSize(package->length);
 
@@ -129,7 +128,7 @@ PParser sendPackage(PPackage package)
 		return nullptr;
 	}
 
-	// once allocated by b64Encode, which uses LocalAlloc
+	// free relevant memory
 	LocalFree(packetToSend);
 	freePackage(package);
 		

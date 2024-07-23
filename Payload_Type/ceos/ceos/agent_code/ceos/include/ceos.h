@@ -39,6 +39,7 @@ extern PCONFIG_CEOS ceosConfig;
 
 
 VOID setUUID(PCHAR newUUID);
+VOID freeCeosConfig();
 VOID ceosMain();
 
 #endif

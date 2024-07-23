@@ -4,4 +4,4 @@
 #include "Parser.h"
 #include "Command.h"
 
-BOOL executeExit(PParser arguments);
+void executeExit(PParser arguments);
