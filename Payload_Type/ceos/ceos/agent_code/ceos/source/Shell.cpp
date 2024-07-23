@@ -8,6 +8,12 @@ BOOL executeShell(PParser arguments)
 	SIZE_T size = 0;
 	PCHAR cmd = getString(arguments, &size);
 	cmd = (PCHAR)LocalReAlloc(cmd, size + 1, LMEM_MOVEABLE | LMEM_ZEROINIT);
+	if (!cmd)
+	{
+		_err("[SHELL] Error in executeShell command");
+		LocalFree(taskUuid);
+		return FALSE;
+	}
 
 	FILE* fp;
 	CHAR path[1035];

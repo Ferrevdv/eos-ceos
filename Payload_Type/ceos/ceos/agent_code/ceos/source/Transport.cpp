@@ -208,10 +208,27 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 		respSize += dwDownloaded;
 
 		if (!respBuffer)
-			// TODO: check allocs! (otherwise return NULL)
+		{
 			respBuffer = LocalAlloc(LPTR, respSize);
+			if (respBuffer == NULL)
+			{
+			    WinHttpCloseHandle(hRequest);
+			    WinHttpCloseHandle(hConnect);
+			    WinHttpCloseHandle(hSession);
+			    return NULL;
+			}
+		}
                 else
+		{
                         respBuffer = LocalReAlloc(respBuffer, respSize, LMEM_MOVEABLE | LMEM_ZEROINIT);
+			if (respBuffer == NULL)
+			{
+			    WinHttpCloseHandle(hRequest);
+			    WinHttpCloseHandle(hConnect);
+			    WinHttpCloseHandle(hSession);
+			    return NULL;
+			}
+		}
 
 		memcpy((PBYTE)respBuffer + (respSize - dwDownloaded), buffer, dwDownloaded);
 		memset(buffer, 0, 1024);
@@ -220,6 +237,13 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 
 	
 	respBuffer = LocalReAlloc(respBuffer, respSize + 1, LMEM_MOVEABLE | LMEM_ZEROINIT);
+	if (respBuffer == NULL)
+	{
+	    WinHttpCloseHandle(hRequest);
+	    WinHttpCloseHandle(hConnect);
+	    WinHttpCloseHandle(hSession);
+	    return NULL;
+	}
 
 	PParser returnParser = newParser((PBYTE)respBuffer, respSize);
 

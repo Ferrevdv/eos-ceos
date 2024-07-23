@@ -6,6 +6,8 @@
 PPackage newPackage(BYTE commandID, BOOL init)
 {
 	PPackage package = (PPackage)LocalAlloc(LPTR, sizeof(Package));
+	if (!package)
+		return nullptr;
 
 	package->buffer = LocalAlloc(LPTR, sizeof(BYTE));
 	if (!package->buffer)
