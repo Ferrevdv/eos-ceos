@@ -33,8 +33,11 @@ BOOL executeShell(PParser arguments)
 	addBytes(responseTask, (PBYTE)output->buffer, output->length, TRUE);
 
 	_pclose(fp);
-	Parser* ResponseParser = sendPackage(responseTask);
 
+	// Free temporary output again
+	freePackage(output);
+
+	Parser* ResponseParser = sendPackage(responseTask);
 	freeParser(ResponseParser);
 
 	return TRUE;
