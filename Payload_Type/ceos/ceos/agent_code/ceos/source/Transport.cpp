@@ -208,6 +208,7 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 		respSize += dwDownloaded;
 
 		if (!respBuffer)
+			// TODO: check allocs! (otherwise return NULL)
 			respBuffer = LocalAlloc(LPTR, respSize);
                 else
                         respBuffer = LocalReAlloc(respBuffer, respSize, LMEM_MOVEABLE | LMEM_ZEROINIT);

@@ -18,6 +18,7 @@ void executeExit(PParser arguments)
 
 	Parser* ResponseParser = sendPackage(responseTask);
 
+	LocalFree(taskUuid);
 	freeParser(ResponseParser);
 
 	exit(0);

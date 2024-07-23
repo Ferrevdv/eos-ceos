@@ -4,16 +4,13 @@
 PParser newParser(PBYTE buffer, SIZE_T size)
 {
 	PParser pParser = (PParser)LocalAlloc(LPTR, sizeof(Parser));
-	pParser->buffer = NULL;
-	pParser->length = size;
-	pParser->originalLength = size;
-	pParser->original = (PBYTE)LocalAlloc(LPTR, size);
-
-	if (!pParser->original)
+	if (!pParser)
 		return NULL;
 
-	memcpy(pParser->original, buffer, size);
-	pParser->buffer = pParser->original;
+	pParser->buffer = buffer;
+	pParser->length = size;
+	pParser->originalLength = size;
+	pParser->original = buffer;
 
 	return pParser;
 
