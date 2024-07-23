@@ -129,6 +129,8 @@ PParser sendPackage(PPackage package)
 		return nullptr;
 	}
 
+	// once allocated by b64Encode, which uses LocalAlloc
+	LocalFree(data);
 	freePackage(package);
 		
 	return response;

@@ -201,8 +201,5 @@ Parser* sendAndReceive(PBYTE data, SIZE_T size)
 	return makeHTTPRequest(data, size);
 #endif 
 
-	// 'data' once allocated by b64Encode, which uses LocalAlloc
-	LocalFree(data);
-
 	return nullptr;
 }
