@@ -5,7 +5,6 @@
 
 #include "Parser.h"
 #include "Package.h"
-#include "Exit.h"
 #include "Shell.h"
 
 

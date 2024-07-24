@@ -75,8 +75,8 @@ BOOL addInt64(PPackage package, UINT64 value)
 
 BOOL addBytes(PPackage package, PBYTE data, SIZE_T size, BOOL copySize)
 {
-	if (copySize && size)
-	{
+	// NOTE: if BOOL copySize set, then add the size of the to be copied data to front of buffer
+	if (copySize && size)	{
 		if (!addInt32(package, size))
 			return FALSE;
 	}
