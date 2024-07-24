@@ -1,6 +1,6 @@
 #include "Shell.h"
 
-PPackage executeShell(PParser arguments)
+*Package executeShell(PParser arguments)
 {
 	UINT32 nbArg = getInt32(arguments);
 	SIZE_T size = 0;
