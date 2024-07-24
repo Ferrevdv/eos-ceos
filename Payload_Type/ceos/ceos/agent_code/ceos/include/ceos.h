@@ -32,6 +32,7 @@ typedef struct
 	UINT32 sleeptime_ms;
 	UINT32 jitter;
 
+	UINT32 numTasks;
 
 } CONFIG_CEOS, * PCONFIG_CEOS;
 

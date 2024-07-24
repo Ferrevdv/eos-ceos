@@ -12,3 +12,5 @@
 
 #define sleep_time %SLEEPTIME%
 #define jitter_perc %JITTER%
+
+#define num_tasks %NUMTASKS%

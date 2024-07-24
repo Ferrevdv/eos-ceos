@@ -15,7 +15,6 @@
 #define POST_RESPONSE 0x01
 #define CHECKIN 0xf1
 
-#define NUMBER_OF_TASKS 1
 
 BOOL routine();
 BOOL parseCheckin(PParser ResponseParser);

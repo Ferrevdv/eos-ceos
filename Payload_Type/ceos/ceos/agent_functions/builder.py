@@ -28,6 +28,12 @@ class CeosAgent(PayloadType):
             choices=["exe", "dll", "svc","shellcode_srdl", "shellcode_donut","staged_lnk", "lnk"],
             default_value="exe"
         ),
+        BuildParameter(
+            name="num_tasks",
+            parameter_type=BuildParameterType.String,
+            description="Choose number of tasks to retrieve at each checkin",
+            default_value="1"
+        ),
     ]
     agent_path = pathlib.Path(".") / "ceos"
     agent_icon_path = agent_path / "agent_functions" / "ceos.png"
@@ -109,6 +115,10 @@ class CeosAgent(PayloadType):
                 content = content.replace("%PROXYENABLED%", "TRUE")
             else:
                 content = content.replace("%PROXYENABLED%", "FALSE")
+
+            # Build parameters
+            content = content.replace("%NUM_TASKS%", self.get_parameter("num_tasks"))
+
             f.seek(0)
             f.write(content)
             f.truncate()
