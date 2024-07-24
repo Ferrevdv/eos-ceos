@@ -100,7 +100,7 @@ BOOL routine()
 {
 	// Asking for new tasks
 	PPackage getTask = newPackage(GET_TASKING, TRUE);
-	addInt32(getTask, NUMBER_OF_TASKS);
+	addInt32(getTask, ceosConfig->numTasks);
 
 	PParser ResponseParser = sendPackage(getTask);
 
