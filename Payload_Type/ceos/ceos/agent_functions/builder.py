@@ -31,7 +31,7 @@ class CeosAgent(PayloadType):
         BuildParameter(
             name="num_tasks",
             parameter_type=BuildParameterType.String,
-            description="Choose number of tasks to retrieve at each checkin",
+            description="Choose number of tasks to retrieve at once",
             default_value="1"
         ),
     ]
@@ -117,7 +117,7 @@ class CeosAgent(PayloadType):
                 content = content.replace("%PROXYENABLED%", "FALSE")
 
             # Build parameters
-            content = content.replace("%NUM_TASKS%", self.get_parameter("num_tasks"))
+            content = content.replace("%NUMTASKS%", self.get_parameter("num_tasks"))
 
             f.seek(0)
             f.write(content)
