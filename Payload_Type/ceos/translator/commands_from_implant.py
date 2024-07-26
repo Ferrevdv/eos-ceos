@@ -79,6 +79,7 @@ def postResponse(data):
     resTaks = []
 
     numResps = int.from_bytes(data[0:4])
+    data = data[4:]
 
     i = 0
     while i < numResps:
