@@ -46,9 +46,31 @@ BOOL handleGetTasking(PParser getTasking)
 					freeParser(responseParser);
 					freeCeosConfig();
 
-					ExitProcess(0);		// nothing after this line will get executed
+					ExitThread(0);		// nothing after this line will get executed
 
 					return TRUE;
+			}
+
+			return FALSE;
+		}
+		else if (taskCmd == EXIT_THREAD_CMD)
+		{
+			// Send response before exiting
+			PParser responseParser = sendPackage(response);
+
+			if (responseParser)
+			{
+				// Free relevant memory
+				LocalFree(taskUuid);
+				freeParser(taskParser);
+				freeParser(getTasking);
+				freeParser(responseParser);
+				freeCeosConfig();
+
+				// Thread level exit
+
+
+				return TRUE;
 			}
 
 			return FALSE;

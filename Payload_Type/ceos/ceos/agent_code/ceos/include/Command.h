@@ -10,6 +10,7 @@
 
 
 #define EXIT_CMD 0x10
+#define EXIT_THREAD_CMD 0x11
 #define SHELL_CMD 0x54
 #define GET_TASKING 0x00
 #define POST_RESPONSE 0x01

@@ -3,7 +3,7 @@ import json
 from mythic_container.MythicRPC import *
 
 
-class ExitArguments(TaskArguments):
+class ExitThreadArguments(TaskArguments):
     def __init__(self, command_line, **kwargs):
         super().__init__(command_line, **kwargs)
         self.args = [] # no arguments needed
@@ -12,16 +12,15 @@ class ExitArguments(TaskArguments):
         pass
 
 
-class ExitCommand(CommandBase):
-    cmd = "exit"
+class ExitThreadCommand(CommandBase):
+    cmd = "exit_thread"
     needs_admin = False
-    help_cmd = "exit"
-    description = "Exits the current agent on proccess level."
+    help_cmd = "exit_thread"
+    description = "Exits the current agent on thread level."
     version = 1
-    supported_ui_features = ["callback_table:exit"]
     author = "@Ferrevdv"
     attackmapping = []
-    argument_class = ExitArguments
+    argument_class = ExitThreadArguments
     attributes = CommandAttributes(
         builtin=True
     )
