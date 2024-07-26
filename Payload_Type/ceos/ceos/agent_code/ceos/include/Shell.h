@@ -4,4 +4,4 @@
 #include "Parser.h"
 #include "Command.h"
 
-*Package executeShell(PParser arguments);
+PPackage executeShell(PParser arguments);
