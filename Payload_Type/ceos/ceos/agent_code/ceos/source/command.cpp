@@ -22,7 +22,7 @@ BOOL handleGetTasking(PParser getTasking)
 		PCHAR taskUuid = getString(getTasking, &uuidLength);
 		addString(response, taskUuid, FALSE);	// Add UUID to response
 
-		// only the params will be sent to respective command function
+		// only the params (& the length in front) will be sent to respective command function
 		PBYTE taskBufferWithArgs = getBytes(getTasking, &argsSize);
 		PParser taskParser = newParser(taskBufferWithArgs, argsSize);
 
@@ -34,26 +34,28 @@ BOOL handleGetTasking(PParser getTasking)
 		}
 		else if (taskCmd == EXIT_CMD)
 		{
-			// Create output package
+			// Add to response package
 			const char* exitMessage = "Process exited";
-			PPackage output = newPackage(0, FALSE);
-			addString(output, exitMessage, FALSE);
-			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
-			freePackage(output);
+			addString(response, exitMessage, TRUE);
 
 			// Send response before exiting
 			PParser responseParser = sendPackage(response);
 
-			// Free relevant memory
-			LocalFree(taskUuid);
-			freeParser(taskParser);
-			freeParser(getTasking);
-			freeParser(responseParser);
-			freeCeosConfig();
+			if (responseParser)
+			{
+					// Free relevant memory
+					LocalFree(taskUuid);
+					freeParser(taskParser);
+					freeParser(getTasking);
+					freeParser(responseParser);
+					freeCeosConfig();
 
-			ExitProcess(0);		// nothing after this line will get executed
+					ExitProcess(0);		// nothing after this line will get executed
 
-			return TRUE;
+					return TRUE;
+			}
+
+			return FALSE;
 		}
 		else
 		{

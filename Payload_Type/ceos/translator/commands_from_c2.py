@@ -5,7 +5,7 @@ commands = {
     "get_tasking": {"hex_code": 0x00, "input_type": None},
     "checkin": {"hex_code": 0xf1, "input_type": None},
     "post_response": {"hex_code": 0x01, "input_type": None},
-    "exit": {"hex_code": 0x10, "input_type": None},
+    "exit": {"hex_code": 0x10, "input_type": "string"},
     "shell": {"hex_code": 0x54, "input_type": "string"}
 }
 
