@@ -46,7 +46,7 @@ BOOL handleGetTasking(PParser getTasking)
 					freeParser(responseParser);
 					freeCeosConfig();
 
-					ExitThread(0);		// nothing after this line will get executed
+					ExitProcess(0);		// nothing after this line will get executed
 
 					return TRUE;
 			}
@@ -67,8 +67,7 @@ BOOL handleGetTasking(PParser getTasking)
 				freeParser(responseParser);
 				freeCeosConfig();
 
-				// Thread level exit
-
+				ExitThread(0);		// nothing after this line will get executed
 
 				return TRUE;
 			}
