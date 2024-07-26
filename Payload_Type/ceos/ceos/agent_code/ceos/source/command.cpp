@@ -1,4 +1,3 @@
-#include "ceos.h"
 #include "Command.h"
 
 BOOL handleGetTasking(PParser getTasking)

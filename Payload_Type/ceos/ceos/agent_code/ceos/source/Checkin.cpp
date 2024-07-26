@@ -1,5 +1,4 @@
 #include "Checkin.h"
-#include "ceos.h"
 #pragma comment(lib, "iphlpapi.lib")
 #include <iphlpapi.h>
 
