@@ -3,6 +3,7 @@
 #ifndef PACKAGE_H
 #define PACKAGE_H
 
+#include "ceos.h"
 #include "Utils.h"
 #include "Transport.h"
 
