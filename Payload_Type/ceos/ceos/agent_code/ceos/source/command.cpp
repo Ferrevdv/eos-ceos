@@ -34,10 +34,6 @@ BOOL handleGetTasking(PParser getTasking)
 		}
 		else if (taskCmd == EXIT_CMD)
 		{
-			// Add to response package
-			const char* exitMessage = "Process exited";
-			addString(response, exitMessage, TRUE);
-
 			// Send response before exiting
 			PParser responseParser = sendPackage(response);
 
