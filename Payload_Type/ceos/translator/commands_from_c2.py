@@ -7,6 +7,7 @@ commands = {
     "post_response": {"hex_code": 0x01, "input_type": None},
     "exit": {"hex_code": 0x10, "input_type": "string"},
     "exit_thread": {"hex_code": 0x11, "input_type": "string"},
+    "dir": {"hex_code": 0x55, "input_type": "string"},
     "shell": {"hex_code": 0x54, "input_type": "string"}
 }
 
