@@ -36,6 +36,9 @@
     <ClCompile Include="source\Shell.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="source\Dir.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
     <ClCompile Include="source\Checkin.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -60,6 +63,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="include\Shell.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dir.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="include\Checkin.h">

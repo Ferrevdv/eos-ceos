@@ -139,6 +139,7 @@
     <ClCompile Include="source\Package.cpp" />
     <ClCompile Include="source\Parser.cpp" />
     <ClCompile Include="source\Shell.cpp" />
+    <ClCompile Include="source\Dir.cpp" />
     <ClCompile Include="source\Transport.cpp" />
     <ClCompile Include="source\Utils.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="include\Package.h" />
     <ClInclude Include="include\Parser.h" />
     <ClInclude Include="include\Shell.h" />
+    <ClInclude Include="include\Dir.h" />
     <ClInclude Include="include\Transport.h" />
     <ClInclude Include="include\Utils.h" />
   </ItemGroup>
