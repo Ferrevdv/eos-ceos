@@ -3,9 +3,9 @@
 #ifndef SHELL_H
 #define SHELL_H
 #include <windows.h>
+#include "Package.h"
 #include "Parser.h"
+#include "Command.h"
 
-typedef struct Package* PPackage;  // Forward declare PPackage
-																	 //
 PPackage executeShell(PParser arguments);
 #endif
