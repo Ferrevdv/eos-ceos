@@ -6,7 +6,6 @@
 #include "ceos.h"
 #include "Parser.h"
 #include "Package.h"
-#include "Dir.h"
 #include "Shell.h"
 
 
