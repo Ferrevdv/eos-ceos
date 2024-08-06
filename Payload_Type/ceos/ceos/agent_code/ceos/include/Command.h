@@ -6,8 +6,8 @@
 #include "ceos.h"
 #include "Parser.h"
 #include "Package.h"
-#include "Shell.h"
 #include "Dir.h"
+#include "Shell.h"
 
 
 #define EXIT_CMD 0x10
