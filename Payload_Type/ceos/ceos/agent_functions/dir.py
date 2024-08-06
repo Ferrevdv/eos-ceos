@@ -28,7 +28,7 @@ class DirCommand(CommandBase):
     version = 1
     author = "@Ferrevdv"
     attackmapping = []
-    argument_class = ExitThreadArguments
+    argument_class = DirArguments
     attributes = CommandAttributes(
         builtin=True
     )
