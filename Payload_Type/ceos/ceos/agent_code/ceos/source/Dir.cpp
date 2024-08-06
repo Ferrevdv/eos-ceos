@@ -2,20 +2,14 @@
 
 PPackage executeDir(PParser arguments)
 {
-	UINT32 nbArg = getInt32(arguments); // if no arguments, this will be b"\x00\x00\x00\x00"
+	UINT32 nbArg = getInt32(arguments);
 	SIZE_T size = 0;
-  PCHAR path = (PCHAR)LocalAlloc(LMEM_ZEROINIT, MAX_PATH * sizeof(CHAR));
-
-	// Initialize path (current directory if no argument given) 
-	if (nbArg != 0)
+	PCHAR path = getString(arguments, &size); // will read first UINT32 as size of param
+	path = (PCHAR)LocalReAlloc(path, size + 1, LMEM_MOVEABLE | LMEM_ZEROINIT);
+	if (!path)
 	{
-		path = getString(arguments, &size); // will read first UINT32 as size of param
-		// Ensure proper null termination
-		path = (PCHAR)LocalReAlloc(cmd, size + 1, LMEM_MOVEABLE | LMEM_ZEROINIT);
-	}
-	else
-	{
-		strcpy(path, ".");
+		_err("[DIR] Error in executeDir command");
+		return NULL;
 	}
 
 	PPackage output = newPackage(0, FALSE);

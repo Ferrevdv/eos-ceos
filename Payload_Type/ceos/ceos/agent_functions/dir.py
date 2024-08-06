@@ -6,10 +6,18 @@ from mythic_container.MythicRPC import *
 class DirArguments(TaskArguments):
     def __init__(self, command_line, **kwargs):
         super().__init__(command_line, **kwargs)
-        self.args = [] # no arguments needed
+        self.args = [
+            CommandParameter(
+                name="directory", 
+                type=ParameterType.String, 
+                description="Directory to list"
+            ),
+        ]
 
     async def parse_arguments(self):
-        pass
+        if len(self.command_line) == 0:
+            self.add_arg("directory", ".")
+        self.add_arg("directory", self.command_line)
 
 
 class DirCommand(CommandBase):
