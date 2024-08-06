@@ -1,4 +1,5 @@
 #include "Dir.h"
+#include "Package.h"
 
 PPackage executeDir(PParser arguments)
 {
