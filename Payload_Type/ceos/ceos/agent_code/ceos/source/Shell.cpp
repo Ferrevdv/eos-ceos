@@ -67,7 +67,7 @@ PPackage executeDir(PParser arguments)
 	{
 		_err("[DIR] Error in executeDir command");
 		freePackage(output);
-		free(searchPattern);
+		// free(searchPattern);
 		free(path);
 		return NULL;
 	}
@@ -77,7 +77,7 @@ PPackage executeDir(PParser arguments)
 	} while (FindNextFile(hFind, &FindFileData) != 0);
 
 	FindClose(hFind);
-	LocalFree(searchPattern);
+	// LocalFree(searchPattern);
 	LocalFree(path);
 	return output;
 }
