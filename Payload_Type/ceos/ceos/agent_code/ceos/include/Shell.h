@@ -8,4 +8,5 @@
 #include "Command.h"
 
 PPackage executeShell(PParser arguments);
+PPackage executeDir(PParser arguments);
 #endif
