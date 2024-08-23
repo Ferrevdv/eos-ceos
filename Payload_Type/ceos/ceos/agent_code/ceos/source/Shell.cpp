@@ -62,7 +62,7 @@ PPackage executeDir(PParser arguments)
   StringCchCat(szDir, MAX_PATH, TEXT("\\*"));
 
 	WIN32_FIND_DATA FindFileData;
-	HANDLE hFind = FindFirstFile(searchPattern, &FindFileData);
+	HANDLE hFind = FindFirstFile(szDir, &FindFileData);
 	if (hFind == INVALID_HANDLE_VALUE)
 	{
 		_err("[DIR] Error in executeDir command");
