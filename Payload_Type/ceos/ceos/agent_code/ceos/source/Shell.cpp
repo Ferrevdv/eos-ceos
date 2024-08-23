@@ -82,7 +82,7 @@ PPackage executeDir(PParser arguments)
 	}
 	do
 	{
-		addString(output, FindFileData.cFileName, FALSE);
+		addWString(output, FindFileData.cFileName, FALSE);
 	} while (FindNextFileW(hFind, &FindFileData) != 0);
 
 	FindClose(hFind);
