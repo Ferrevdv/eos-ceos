@@ -1,4 +1,4 @@
-#include "ceos.h"
+#include "feos.h"
 #include <cstdlib>
 
 //#ifdef _DEBUG
@@ -9,7 +9,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 {
 	srand(time(nullptr));
 
-	ceosMain();
+	feosMain();
     
 	return 0;
 }

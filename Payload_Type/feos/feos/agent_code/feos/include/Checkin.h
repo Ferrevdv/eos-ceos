@@ -5,7 +5,7 @@
 #include <windows.h>
 #include <lm.h>
 #include <lmwksta.h>
-#include "ceos.h"
+#include "feos.h"
 #include "Package.h"
 #include "Transport.h"
 #include "Parser.h"

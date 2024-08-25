@@ -3,7 +3,7 @@
 #ifndef COMMAND
 #define COMMAND
 
-#include "ceos.h"
+#include "feos.h"
 #include "Parser.h"
 #include "Package.h"
 #include "Shell.h"

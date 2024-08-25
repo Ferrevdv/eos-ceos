@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{39c572b7-41fc-4c23-bb57-c63ed0f826f2}</ProjectGuid>
-    <RootNamespace>ceos</RootNamespace>
+    <RootNamespace>feos</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\commando\source\repos\basic_implant\Payload_Type\ceos\ceos\agent_code\ceos\include;C:\Users\commando\source\repos\basic_implant\Payload_Type\ceos\ceos\agent_code\ceos\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\commando\source\repos\basic_implant\Payload_Type\feos\feos\agent_code\feos\include;C:\Users\commando\source\repos\basic_implant\Payload_Type\feos\feos\agent_code\feos\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,7 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ceos.cpp" />
+    <ClCompile Include="feos.cpp" />
     <ClCompile Include="source\Checkin.cpp" />
     <ClCompile Include="source\Command.cpp" />
     <ClCompile Include="source\Main.cpp" />
@@ -144,7 +144,7 @@
     <ClCompile Include="source\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ceos.h" />
+    <ClInclude Include="include\feos.h" />
     <ClInclude Include="include\Checkin.h" />
     <ClInclude Include="include\Command.h" />
     <ClInclude Include="include\Config.h" />

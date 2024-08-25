@@ -8,8 +8,8 @@ from distutils.dir_util import copy_tree
 import asyncio
 
 
-class CeosAgent(PayloadType):
-    name = "Ceos"
+class FeosAgent(PayloadType):
+    name = "Feos"
     file_extension = "exe"
     author = "@RedTeam_SNCF"
     supported_os = [SupportedOS.Windows]
@@ -19,7 +19,7 @@ class CeosAgent(PayloadType):
     supports_dynamic_loading = False
     c2_profiles = ["http"]
     mythic_encrypts = False
-    translation_container = "CeosTranslator" 
+    translation_container = "FeosTranslator" 
     build_parameters = [
         BuildParameter(
             name="output",
@@ -35,7 +35,7 @@ class CeosAgent(PayloadType):
             default_value="1"
         ),
     ]
-    agent_path = pathlib.Path(".") / "ceos"
+    agent_path = pathlib.Path(".") / "feos"
     agent_icon_path = agent_path / "agent_functions" / "ceos.png"
     agent_code_path = agent_path / "agent_code"
 
@@ -96,7 +96,7 @@ class CeosAgent(PayloadType):
                 StepStdout="All configuration setting applied",
                 StepSuccess=True
             ))
-        with open(agent_build_path.name+"/ceos/include/Config.h", "r+") as f:
+        with open(agent_build_path.name+"/feos/include/Config.h", "r+") as f:
             content = f.read()
             content = content.replace("%UUID%", Config["payload_uuid"])
             content = content.replace("%HOSTNAME%", Config["callback_host"])
@@ -123,8 +123,8 @@ class CeosAgent(PayloadType):
             f.write(content)
             f.truncate()
         
-        command = "make -C {} exe".format(agent_build_path.name+"/ceos")
-        filename = agent_build_path.name + "/ceos/build/ceos.exe"
+        command = "make -C {} exe".format(agent_build_path.name+"/feos")
+        filename = agent_build_path.name + "/feos/build/feos.exe"
         proc = await asyncio.create_subprocess_shell(command, stdout=asyncio.subprocess.PIPE,
                                                               stderr=asyncio.subprocess.PIPE)
 

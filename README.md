@@ -1,22 +1,22 @@
-# CEOS - Basic Mythic Implant in C
+# FEOS - Basic Mythic Implant in C
 
-Ceos is a basic Windows implant written in C interfaceable with the Mythic C2 framework. 
+Feos is a basic Windows implant written in C interfaceable with the Mythic C2 framework. 
 
 This repo was made to showcase the usage of a translator container for low-level languages implant for Mythic.
 A blogpost explains in great detail how (and why) this project was conceived.
 
 More info on our blog post: [How to build your own mythic agent in C](https://red-team-sncf.github.io/how-to-create-your-own-mythic-agent-in-c.html)
 
-## Install Ceos
+## Install Feos
 
 Once Mythic is installed and running : 
 ```
-./mythic-cli install github https://github.com/Red-Team-SNCF/ceos
+./mythic-cli install github https://github.com/Red-Team-SNCF/feos
 ```
 
 ## Detection
 
-A YARA rule to detect Ceos is provided for detection purposes.
+A YARA rule to detect Feos is provided for detection purposes.
 
 ## Communication protocol
 ### HEADER - Implant to C2

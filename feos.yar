@@ -1,6 +1,6 @@
 import "pe"
 
-rule CeosRule
+rule FeosRule
 {
     strings:
         $str1 = { 57 69 6e 64 6f 77 73 }

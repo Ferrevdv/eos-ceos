@@ -42,10 +42,10 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 	LPCWSTR noProxyBypass = NULL;
 	DWORD proxyFlag = 0;
 
-	if (ceosConfig->isProxyEnabled && ceosConfig->proxyURL)
+	if (feosConfig->isProxyEnabled && feosConfig->proxyURL)
 	{
 		accessType = WINHTTP_ACCESS_TYPE_NAMED_PROXY;
-		httpProxy = ceosConfig->proxyURL;
+		httpProxy = feosConfig->proxyURL;
 		noProxyBypass = WINHTTP_NO_PROXY_BYPASS;
 	}
 	else 
@@ -56,22 +56,22 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 	}
 
 	httpFlags = WINHTTP_FLAG_BYPASS_PROXY_CACHE;
-	if (ceosConfig->isSSL)
+	if (feosConfig->isSSL)
 		httpFlags |= WINHTTP_FLAG_SECURE;
 
 
-	hSession = WinHttpOpen(ceosConfig->userAgent, accessType, httpProxy, noProxyBypass, proxyFlag);
+	hSession = WinHttpOpen(feosConfig->userAgent, accessType, httpProxy, noProxyBypass, proxyFlag);
 	if (!hSession)
 		return NULL;
 
-	hConnect = WinHttpConnect(hSession, ceosConfig->hostName, ceosConfig->httpPort, 0);
+	hConnect = WinHttpConnect(hSession, feosConfig->hostName, feosConfig->httpPort, 0);
 	if (!hConnect)
         {
                 WinHttpCloseHandle(hSession);
 		return NULL;
         }
 
-	hRequest = WinHttpOpenRequest(hConnect, ceosConfig->httpMethod, ceosConfig->endPoint, NULL, NULL, NULL, httpFlags);
+	hRequest = WinHttpOpenRequest(hConnect, feosConfig->httpMethod, feosConfig->endPoint, NULL, NULL, NULL, httpFlags);
 	if (!hRequest)
         {
                 WinHttpCloseHandle(hConnect);
@@ -79,7 +79,7 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 		return NULL;
         }
 
-	if (ceosConfig->isSSL)
+	if (feosConfig->isSSL)
 	{
 		httpFlags = SECURITY_FLAG_IGNORE_UNKNOWN_CA |
 			SECURITY_FLAG_IGNORE_CERT_DATE_INVALID |
@@ -129,7 +129,7 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
 			autoProxyOptions.lpvReserved = NULL;
 			autoProxyOptions.dwReserved = 0;
 
-			HttpUrlLen = (15 + lstrlenW(ceosConfig->hostName) + lstrlenW(ceosConfig->endPoint));
+			HttpUrlLen = (15 + lstrlenW(feosConfig->hostName) + lstrlenW(feosConfig->endPoint));
 			HttpUrl = (LPWSTR)LocalAlloc(LPTR, HttpUrlLen * sizeof(WCHAR));
                         if (HttpUrl == NULL)
                         {
@@ -140,7 +140,7 @@ Parser* makeHTTPRequest(PBYTE bufferIn, UINT32 bufferLen)
                         }
 			WCHAR fullHttpScheme[20] = L"%ws://%ws:%lu/%ws";
 
-			swprintf_s(HttpUrl, HttpUrlLen, fullHttpScheme, L"http", ceosConfig->hostName, ceosConfig->httpPort, ceosConfig->endPoint);
+			swprintf_s(HttpUrl, HttpUrlLen, fullHttpScheme, L"http", feosConfig->hostName, feosConfig->httpPort, feosConfig->endPoint);
 			
 			if (WinHttpGetProxyForUrl(hSession, HttpUrl, &autoProxyOptions, &proxyInfo))
 			{

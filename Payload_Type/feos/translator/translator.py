@@ -10,9 +10,9 @@ from translator.commands_from_implant import *
 from mythic_container.TranslationBase import *
 
 
-class CeosTranslator(TranslationContainer):
-    name = "CeosTranslator"
-    description = "Translator for Ceos agent"
+class FeosTranslator(TranslationContainer):
+    name = "FeosTranslator"
+    description = "Translator for Feos agent"
     author = "@RedTeam_SNCF"
 
     async def generate_keys(self, inputMsg: TrGenerateEncryptionKeysMessage) -> TrGenerateEncryptionKeysMessageResponse:

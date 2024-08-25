@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CEOS_H
-#define CEOS_H
+#ifndef FEOS_H
+#define FEOS_H
 
 
 
@@ -34,13 +34,13 @@ typedef struct
 
 	UINT32 numTasks;
 
-} CONFIG_CEOS, * PCONFIG_CEOS;
+} CONFIG_FEOS, * PCONFIG_FEOS;
 
-extern PCONFIG_CEOS ceosConfig;
+extern PCONFIG_FEOS feosConfig;
 
 
 VOID setUUID(PCHAR newUUID);
-VOID freeCeosConfig();
-VOID ceosMain();
+VOID freeFeosConfig();
+VOID feosMain();
 
 #endif

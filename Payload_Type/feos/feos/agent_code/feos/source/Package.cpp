@@ -1,4 +1,4 @@
-#include "ceos.h"
+#include "feos.h"
 #include "Package.h"
 
 //Creates new Package.
@@ -16,7 +16,7 @@ PPackage newPackage(BYTE commandID, BOOL init)
 	package->length = 0;
 	if (init) 
 	{
-		addString(package, ceosConfig->agentID, FALSE);
+		addString(package, feosConfig->agentID, FALSE);
 		addByte(package, commandID);
 	}
 		

@@ -151,7 +151,7 @@ PParser checkin()
 	UINT32 numberOfIPs = 0;
 
 	PPackage checkin = newPackage(CHECKIN, TRUE);
-	addString(checkin, (PCHAR)ceosConfig->agentID, FALSE);
+	addString(checkin, (PCHAR)feosConfig->agentID, FALSE);
 
 	// IP addresses;
 	UINT32* tableOfIPs = getIPAddress(&numberOfIPs);
